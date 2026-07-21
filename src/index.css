@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Montserrat", "Inter", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* Deep aviation blue — headers, nav, footer, primary sections/buttons */
+  --color-navy-950: #050c1c;
+  --color-navy-900: #081a37;
+  --color-navy-800: #0c2650;
+  --color-navy-700: #123374;
+  --color-navy-600: #1a4293;
+  --color-blue-500: #2f5fc4;
+  --color-blue-100: #eaf0fb;
+  --color-blue-50: #f5f8fd;
+
+  /* Captain's insignia red — sparing accent for CTAs / highlights */
+  --color-red-700: #9c1420;
+  --color-red-600: #d31627;
+  --color-red-500: #e8394a;
+  --color-red-50: #fdecec;
+
+  /* Ink / neutrals for white sections */
+  --color-ink-900: #0a1526;
+  --color-ink-600: #45536b;
+  --color-ink-400: #7c8aa3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: var(--color-ink-900);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-red-600);
+  color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-blue-50);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy-700);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-red-600);
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* Navy gradient text — for use on white backgrounds */
+.text-gradient-navy {
+  background: linear-gradient(120deg, #123374 0%, #1a4293 50%, #2f5fc4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Red gradient text — sparing accent word highlight */
+.text-gradient-red {
+  background: linear-gradient(120deg, #e8394a 0%, #d31627 60%, #9c1420 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Light gradient text — for use on dark navy backgrounds */
+.text-gradient-sky {
+  background: linear-gradient(120deg, #ffffff 0%, #eaf1fd 45%, #bcd4f7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 30px rgba(120, 165, 232, 0.35));
+}
+
+/* Glass panel for use on dark navy sections */
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(16px);
+}
+
+/* Elevated card for use on white sections */
+.card-light {
+  background: #ffffff;
+  border: 1px solid rgba(10, 21, 38, 0.08);
+  box-shadow: 0 1px 2px rgba(10, 21, 38, 0.04);
+}
+
+.section-label {
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-red-600);
+}
+
+.section-label-light {
+  letter-spacing: 0.35em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f2a3ab;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  background: linear-gradient(120deg, var(--color-red-600), var(--color-red-700));
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.9rem 1.8rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 24px -8px rgba(211, 22, 39, 0.55);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+.btn-primary:hover {
+  filter: brightness(1.08);
+}
+
+.footer-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+.footer-icon:hover {
+  background: var(--color-red-600);
+  color: #ffffff;
+  border-color: var(--color-red-600);
+}
