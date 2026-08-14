@@ -8,10 +8,12 @@ export function Modal({
   isOpen,
   onClose,
   children,
+  maxWidthClassName = "max-w-lg",
 }: {
   isOpen: boolean;
   onClose: () => void;
   children: ReactNode;
+  maxWidthClassName?: string;
 }) {
   useEffect(() => {
     if (!isOpen) return;
@@ -43,7 +45,7 @@ export function Modal({
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl"
+            className={`relative w-full ${maxWidthClassName} max-h-[85vh] overflow-y-auto rounded-3xl bg-white shadow-2xl`}
           >
             <button
               onClick={onClose}

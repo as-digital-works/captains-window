@@ -3,7 +3,9 @@ import { Quote } from "lucide-react";
 import { PageBanner } from "../components/PageBanner";
 import { Reveal } from "../components/Reveal";
 import { CtaBand } from "../components/CtaBand";
-import { testimonials } from "../data/content";
+import { testimonials, googleReviews } from "../data/content";
+
+const allTestimonials = [...testimonials, ...googleReviews];
 
 export function TestimonialsPage() {
   return (
@@ -11,8 +13,8 @@ export function TestimonialsPage() {
       <PageBanner eyebrow="What Students Say" title="Testimonials" />
       <section className="relative py-24 md:py-32 bg-white">
         <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-6">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.06}>
+          {allTestimonials.map((t, i) => (
+            <Reveal key={t.name} delay={i * 0.02}>
               <motion.div
                 whileHover={{ y: -4 }}
                 className="card-light rounded-2xl p-7 h-full flex flex-col"

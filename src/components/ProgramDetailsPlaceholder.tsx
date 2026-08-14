@@ -1,9 +1,33 @@
 import { Reveal } from "./Reveal";
 
 const sections = [
-  { title: "Program Overview", note: "A summary of the full pilot training program will go here." },
-  { title: "Training Structure", note: "Module-by-module breakdown of the training timeline will go here." },
-  { title: "What's Included", note: "Ground classes, flight hours, equipment, and support details will go here." },
+  {
+    title: "Program Overview",
+    text: "Clear, realistic pathway planning with expert mentoring. We guide you through eligibility assessment, licensing pathways (India & International), budgeting, and career roadmap.",
+    points: [
+      "Clear and realistic career pathway planning",
+      "Eligibility assessment and licensing guidance (India & International)",
+      "Budget planning and structured aviation career roadmap",
+    ],
+  },
+  {
+    title: "Training Structure",
+    text: "A strong theoretical foundation before flight training, with comprehensive DGCA ground subjects preparation led by experienced airline pilots.",
+    points: [
+      "Strong theoretical foundation before flight training",
+      "DGCA ground subjects preparation",
+      "Training by experienced airline pilots",
+    ],
+  },
+  {
+    title: "What's Included",
+    text: "Complete admission support for flight schools in India and internationally, from documentation to visa guidance and medical assistance.",
+    points: [
+      "Complete admission support for India & international flight schools",
+      "Documentation and application assistance",
+      "Visa guidance and medical support",
+    ],
+  },
 ];
 
 export function ProgramDetailsPlaceholder() {
@@ -21,13 +45,16 @@ export function ProgramDetailsPlaceholder() {
           {sections.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.06}>
               <div className="card-light rounded-2xl p-6 md:p-8">
-                <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
-                  <h3 className="font-display text-lg text-navy-900">{s.title}</h3>
-                  <span className="rounded-full bg-navy-950/5 border border-navy-900/10 px-3 py-1 text-[10px] tracking-widest uppercase text-ink-400">
-                    Details to be added
-                  </span>
-                </div>
-                <p className="text-sm text-ink-400 leading-relaxed">{s.note}</p>
+                <h3 className="font-display text-lg text-navy-900 mb-3">{s.title}</h3>
+                <p className="text-sm text-ink-600 leading-relaxed mb-4">{s.text}</p>
+                <ul className="flex flex-col gap-2">
+                  {s.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-ink-600">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-red-600 shrink-0" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Reveal>
           ))}

@@ -1,4 +1,4 @@
-import { ImageIcon } from "lucide-react";
+import { ImageIcon, MapPin, Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { useFacilityModal } from "../context/FacilityModalContext";
 import type { LocationEntry } from "../data/content";
@@ -9,8 +9,9 @@ export function LocationDetailCard({ location, delay = 0 }: { location: Location
   return (
     <Reveal delay={delay}>
       <button
+        id={`location-${location.id}`}
         onClick={() => open(location)}
-        className="text-left card-light rounded-2xl overflow-hidden h-full flex flex-col w-full hover:border-red-500/30 transition-colors"
+        className="text-left card-light rounded-2xl overflow-hidden h-full flex flex-col w-full hover:border-red-500/30 transition-colors scroll-mt-28"
       >
         <div className="relative aspect-[16/9] bg-gradient-to-br from-navy-800 via-navy-900 to-navy-950 flex items-center justify-center">
           {location.image ? (
@@ -32,6 +33,27 @@ export function LocationDetailCard({ location, delay = 0 }: { location: Location
           <p className="text-sm text-ink-600 leading-relaxed flex-1">
             {location.description ?? `Details about our ${location.name} facility coming soon.`}
           </p>
+          {location.address || location.category === "ground-training" ? (
+            <div className="mt-4 pt-4 border-t border-navy-900/10 text-xs text-ink-400 space-y-1.5">
+              {location.address ? (
+                <div className="flex items-start gap-2">
+                  <MapPin size={13} className="shrink-0 mt-0.5" />
+                  <span>{location.address}</span>
+                </div>
+              ) : (
+                <div className="flex items-start gap-2 italic">
+                  <MapPin size={13} className="shrink-0 mt-0.5" />
+                  <span>Address and contact number to be added</span>
+                </div>
+              )}
+              {location.phone && (
+                <div className="flex items-center gap-2">
+                  <Phone size={13} className="shrink-0" />
+                  <span>{location.phone}</span>
+                </div>
+              )}
+            </div>
+          ) : null}
         </div>
       </button>
     </Reveal>

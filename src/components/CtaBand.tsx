@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { contact } from "../data/content";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 
 export function CtaBand() {
   return (
@@ -29,9 +30,9 @@ export function CtaBand() {
             href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
             target="_blank"
             rel="noreferrer"
-            className="flex items-center gap-2 rounded-full border border-white/20 text-white px-7 py-3.5 text-sm tracking-wide hover:bg-white/10 transition"
+            className="flex items-center gap-2 rounded-full bg-[#25D366] text-white px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-[#20bd5a] transition"
           >
-            <MessageCircle size={16} /> WhatsApp Us
+            <WhatsAppIcon size={18} /> WhatsApp Us
           </a>
         </div>
       </motion.div>

@@ -3,8 +3,11 @@ import { GlobeSection } from "../components/GlobeSection";
 import { LocationDetailsSection } from "../components/LocationDetailsSection";
 import { CtaBand } from "../components/CtaBand";
 import { globes } from "../data/content";
+import { useScrollToHash } from "../hooks/useScrollToHash";
 
 export function DestinationsPage() {
+  useScrollToHash();
+
   return (
     <>
       <PageBanner eyebrow="Where We Fly" title="Partner Destinations" />

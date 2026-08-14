@@ -6,12 +6,12 @@ export function HeroFallback() {
       <Plane
         size={110}
         strokeWidth={1.1}
-        className="text-white drop-shadow-[0_0_28px_rgba(232,57,74,0.4)] -rotate-[8deg] md:hidden"
+        className="text-navy-800 drop-shadow-[0_0_28px_rgba(47,95,196,0.25)] -rotate-[8deg] md:hidden"
       />
       <Plane
         size={140}
         strokeWidth={1.1}
-        className="hidden md:block text-white drop-shadow-[0_0_28px_rgba(232,57,74,0.4)] -rotate-[8deg]"
+        className="hidden md:block text-navy-800 drop-shadow-[0_0_28px_rgba(47,95,196,0.25)] -rotate-[8deg]"
       />
     </div>
   );

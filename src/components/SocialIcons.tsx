@@ -18,14 +18,6 @@ export function InstagramIcon({ size = 16, className }: IconProps) {
   );
 }
 
-export function TwitterIcon({ size = 16, className }: IconProps) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path d="M20.5 6.6c-.6.3-1.3.5-2 .6a3.4 3.4 0 0 0 1.5-1.9 6.9 6.9 0 0 1-2.2.85 3.4 3.4 0 0 0-5.9 3.1A9.7 9.7 0 0 1 4.8 5.9a3.4 3.4 0 0 0 1.06 4.6 3.4 3.4 0 0 1-1.55-.43v.04a3.4 3.4 0 0 0 2.75 3.35 3.4 3.4 0 0 1-1.54.06 3.4 3.4 0 0 0 3.18 2.4A6.9 6.9 0 0 1 3.5 17.4a9.7 9.7 0 0 0 5.3 1.55c6.36 0 9.84-5.27 9.84-9.84l-.01-.45c.68-.48 1.26-1.09 1.72-1.78z" />
-    </svg>
-  );
-}
-
 export function YoutubeIcon({ size = 16, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>

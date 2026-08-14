@@ -1,4 +1,4 @@
-import { ImageIcon } from "lucide-react";
+import { ImageIcon, MapPin, Phone, User } from "lucide-react";
 import { Modal } from "./Modal";
 import { useFacilityModal } from "../context/FacilityModalContext";
 
@@ -29,6 +29,48 @@ export function FacilityModal() {
             <p className="text-sm md:text-base text-ink-600 leading-relaxed">
               {location.description ?? `Details about our ${location.name} facility coming soon.`}
             </p>
+
+            {location.address || location.category === "ground-training" ? (
+              <div className="mt-5 space-y-1.5 text-sm text-ink-600">
+                {location.address ? (
+                  <div className="flex items-start gap-2">
+                    <MapPin size={15} className="shrink-0 mt-0.5 text-red-600" />
+                    <span>{location.address}</span>
+                  </div>
+                ) : (
+                  <div className="flex items-start gap-2 italic text-ink-400">
+                    <MapPin size={15} className="shrink-0 mt-0.5" />
+                    <span>Address and contact number to be added</span>
+                  </div>
+                )}
+              </div>
+            ) : null}
+
+            <div className="mt-6 rounded-2xl border border-navy-900/10 bg-blue-50/40 p-5 flex items-start gap-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-navy-900/10 text-red-600">
+                {location.contactPhones?.length ? <Phone size={18} /> : <User size={18} />}
+              </span>
+              <div>
+                <div className="text-xs tracking-widest uppercase text-ink-400 mb-1">
+                  {location.contactPhones?.length ? `Call Us About ${location.name}` : `Why ${location.name}`}
+                </div>
+                {location.contactPhones?.length ? (
+                  <div className="flex flex-col gap-1">
+                    {location.contactPhones.map((p) => (
+                      <a
+                        key={p}
+                        href={`tel:${p.replace(/\s/g, "")}`}
+                        className="text-sm font-semibold text-red-600 hover:text-red-700"
+                      >
+                        {p}
+                      </a>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="text-sm text-ink-600">{location.highlight ?? "Details to be added."}</div>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}

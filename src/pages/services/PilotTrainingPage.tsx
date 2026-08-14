@@ -3,6 +3,7 @@ import { PageBanner } from "../../components/PageBanner";
 import { BadgeStrip, ServiceBody } from "../../components/ServiceBody";
 import { PilotRoadmap } from "../../components/PilotRoadmap";
 import { ProgramDetailsPlaceholder } from "../../components/ProgramDetailsPlaceholder";
+import { FAQSection } from "../../components/FAQSection";
 import { CtaBand } from "../../components/CtaBand";
 import { Reveal } from "../../components/Reveal";
 import { services } from "../../data/content";
@@ -35,6 +36,7 @@ export function PilotTrainingPage() {
       </ServiceBody>
       <ProgramDetailsPlaceholder />
       <PilotRoadmap />
+      <FAQSection />
       <CtaBand />
     </>
   );

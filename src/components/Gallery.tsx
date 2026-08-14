@@ -1,54 +1,33 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Award,
-  BookOpen,
-  Compass,
-  GraduationCap,
-  Medal,
-  PlayCircle,
-  Radar,
-  Star,
-  Trophy,
-  Users,
-} from "lucide-react";
-import type { LucideIcon } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { Modal } from "./Modal";
-import { galleryCategories } from "../data/content";
 
 type GalleryTile =
   | { type: "photo"; src: string; caption: string }
-  | { type: "video"; src: string; poster: string; caption: string }
-  | { type: "placeholder"; icon: LucideIcon };
+  | { type: "video"; src: string; poster?: string; caption: string };
 
-const gradients = [
-  "from-navy-800 via-navy-900 to-navy-950",
-  "from-red-600/30 via-navy-900 to-navy-950",
-  "from-blue-500/30 via-navy-900 to-navy-950",
-  "from-navy-700 via-navy-900 to-navy-950",
-];
+const galleryTabs = ["Life at Captains Window", "FAQs", "Testimonials"] as const;
+type GalleryTab = (typeof galleryTabs)[number];
 
-const tiles: Record<(typeof galleryCategories)[number], GalleryTile[]> = {
-  "On Academy": [
-    { type: "placeholder", icon: GraduationCap },
-    { type: "placeholder", icon: BookOpen },
-    { type: "placeholder", icon: Users },
-    { type: "placeholder", icon: Compass },
-  ],
-  "Off Academy": [
-    { type: "placeholder", icon: Radar },
-    { type: "placeholder", icon: Users },
-    { type: "placeholder", icon: Compass },
-    { type: "placeholder", icon: Radar },
-  ],
-  "Epaulets Ceremony": [
-    { type: "placeholder", icon: Award },
-    { type: "placeholder", icon: GraduationCap },
-    { type: "placeholder", icon: Award },
-    { type: "placeholder", icon: GraduationCap },
-  ],
-  "Life at Captains' Window": [
+const albums: Record<GalleryTab, GalleryTile[]> = {
+  "Life at Captains Window": [
+    { type: "photo", src: "/images/gallery/calicut/calicut-01.jpg", caption: "Calicut Facility" },
+    { type: "photo", src: "/images/gallery/calicut/calicut-02.jpg", caption: "Calicut Facility" },
+    { type: "photo", src: "/images/gallery/calicut/calicut-03.jpg", caption: "Calicut Facility" },
+    {
+      type: "video",
+      src: "/videos/gallery/calicut/calicut-video-01.mp4",
+      poster: "/images/gallery/calicut/calicut-01.jpg",
+      caption: "Life at Our Calicut Campus",
+    },
+    {
+      type: "video",
+      src: "/videos/gallery/calicut/calicut-video-02.mp4",
+      poster: "/images/gallery/calicut/calicut-02.jpg",
+      caption: "Calicut Campus Event",
+    },
     { type: "photo", src: "/images/ajman/reception.jpg", caption: "Reception — Ajman Office" },
     { type: "photo", src: "/images/ajman/boardroom-table.jpg", caption: "Boardroom — Ajman Office" },
     { type: "photo", src: "/images/ajman/boardroom-screen.jpg", caption: "Conference Room — Ajman Office" },
@@ -60,42 +39,85 @@ const tiles: Record<(typeof galleryCategories)[number], GalleryTile[]> = {
       poster: "/images/ajman/reception.jpg",
       caption: "A Look Inside Our Ajman Office",
     },
+    { type: "photo", src: "/images/gallery/life/serbia-01.jpg", caption: "Cadets — Serbia Flying Facility" },
+    { type: "photo", src: "/images/gallery/life/serbia-02.jpg", caption: "Serbia Flying Facility" },
+    { type: "photo", src: "/images/gallery/life/serbia-03.jpg", caption: "Cadets — Serbia Flying Facility" },
+    { type: "photo", src: "/images/gallery/life/south-africa-01.jpg", caption: "South Africa Flying Facility" },
+    { type: "photo", src: "/images/gallery/life/south-africa-02.jpg", caption: "South Africa Flying Facility" },
   ],
-  Achievements: [
-    { type: "placeholder", icon: Trophy },
-    { type: "placeholder", icon: Medal },
-    { type: "placeholder", icon: Award },
-    { type: "placeholder", icon: Star },
+  FAQs: [
+    {
+      type: "video",
+      src: "/videos/media/media-cockpit.mp4",
+      poster: "/images/gallery/media/media-cockpit.jpg",
+      caption: "Inside the Cockpit",
+    },
+    {
+      type: "video",
+      src: "/videos/media/media-informative-02.mp4",
+      poster: "/images/gallery/media/media-informative-02.jpg",
+      caption: "Captains' Window — Q&A",
+    },
+  ],
+  Testimonials: [
+    {
+      type: "video",
+      src: "/videos/testimonials/testimonial-gayathri.mp4",
+      poster: "/images/gallery/testimonials/testimonial-gayathri.jpg",
+      caption: "Gayathri — Student Testimonial",
+    },
+    {
+      type: "video",
+      src: "/videos/testimonials/testimonial-ir.mp4",
+      poster: "/images/gallery/testimonials/testimonial-ir.jpg",
+      caption: "Student Testimonial",
+    },
+    {
+      type: "video",
+      src: "/videos/testimonials/testimonial-zidan.mp4",
+      poster: "/images/gallery/testimonials/testimonial-zidan.jpg",
+      caption: "Zidan — Student Testimonial",
+    },
+    {
+      type: "video",
+      src: "/videos/testimonials/testimonial-04.mp4",
+      poster: "/images/gallery/testimonials/testimonial-04.jpg",
+      caption: "Student Testimonial",
+    },
+    {
+      type: "video",
+      src: "/videos/testimonials/testimonial-05.mp4",
+      poster: "/images/gallery/testimonials/testimonial-05.jpg",
+      caption: "Student Testimonial",
+    },
   ],
 };
 
 export function Gallery() {
-  const [active, setActive] = useState<(typeof galleryCategories)[number]>(galleryCategories[0]);
+  const [active, setActive] = useState<GalleryTab>(galleryTabs[0]);
   const [lightboxTile, setLightboxTile] = useState<GalleryTile | null>(null);
-  const activeTiles = tiles[active];
 
   return (
     <section id="gallery" className="relative py-28 md:py-36 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <Reveal className="text-center mb-10">
-          <span className="section-label">Gallery</span>
-          <h2 className="font-display text-3xl md:text-5xl mt-4 text-navy-900">
-            Life at <span className="text-gradient-red">Captains&rsquo; Window</span>
+          <h2 className="font-display text-3xl md:text-5xl text-navy-900">
+            <span className="text-gradient-red">Gallery</span>
           </h2>
         </Reveal>
 
         <Reveal delay={0.1} className="flex justify-center gap-3 mb-12 flex-wrap">
-          {galleryCategories.map((cat) => (
+          {galleryTabs.map((tab) => (
             <button
-              key={cat}
-              onClick={() => setActive(cat)}
+              key={tab}
+              onClick={() => setActive(tab)}
               className={`rounded-full px-5 py-2.5 text-xs md:text-sm tracking-wide border transition-all ${
-                active === cat
+                active === tab
                   ? "bg-red-600 text-white border-red-600 font-semibold"
                   : "border-navy-900/15 text-ink-600 hover:border-navy-900/35"
               }`}
             >
-              {cat}
+              {tab}
             </button>
           ))}
         </Reveal>
@@ -107,55 +129,44 @@ export function Gallery() {
           transition={{ duration: 0.4 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"
         >
-          {activeTiles.map((tile, i) => {
-            const clickable = tile.type === "photo" || tile.type === "video";
-            return (
-              <motion.button
-                key={i}
-                type="button"
-                disabled={!clickable}
-                onClick={() => clickable && setLightboxTile(tile)}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.06, duration: 0.5 }}
-                whileHover={clickable ? { scale: 1.03 } : undefined}
-                className={`relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center text-left ${
-                  tile.type === "placeholder" ? `bg-gradient-to-br ${gradients[i % gradients.length]}` : ""
-                } ${clickable ? "cursor-pointer" : "cursor-default"}`}
-              >
-                {tile.type === "photo" && (
-                  <>
-                    <img src={tile.src} alt={tile.caption} className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-navy-950/85 to-transparent">
-                      <span className="text-[10px] leading-snug tracking-wide text-white/85">{tile.caption}</span>
-                    </div>
-                  </>
-                )}
-                {tile.type === "video" && (
-                  <>
+          {albums[active].map((tile, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setLightboxTile(tile)}
+              className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 flex items-center justify-center bg-navy-900 cursor-pointer"
+            >
+              {tile.type === "photo" && (
+                <>
+                  <img src={tile.src} alt={tile.caption} className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-navy-950/85 to-transparent">
+                    <span className="text-[11px] leading-snug tracking-wide text-white/90">{tile.caption}</span>
+                  </div>
+                </>
+              )}
+              {tile.type === "video" && (
+                <>
+                  {tile.poster ? (
                     <img src={tile.poster} alt={tile.caption} className="absolute inset-0 h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-navy-950/30 flex items-center justify-center">
-                      <PlayCircle size={48} className="text-white drop-shadow-lg" strokeWidth={1.3} />
-                    </div>
-                    <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-navy-950/85 to-transparent">
-                      <span className="text-[10px] leading-snug tracking-wide text-white/85">{tile.caption}</span>
-                    </div>
-                  </>
-                )}
-                {tile.type === "placeholder" && (
-                  <>
-                    <tile.icon size={40} className="text-white/25" strokeWidth={1.2} />
-                    <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-navy-950/80 to-transparent">
-                      <span className="text-[10px] tracking-widest uppercase text-white/50">{active}</span>
-                    </div>
-                    <span className="absolute top-3 right-3 text-[9px] tracking-widest uppercase text-white/25">
-                      Placeholder
-                    </span>
-                  </>
-                )}
-              </motion.button>
-            );
-          })}
+                  ) : (
+                    <video
+                      src={tile.src}
+                      preload="metadata"
+                      muted
+                      playsInline
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  )}
+                  <div className="absolute inset-0 bg-navy-950/25 flex items-center justify-center">
+                    <PlayCircle size={36} className="text-white drop-shadow-lg" strokeWidth={1.3} />
+                  </div>
+                  <div className="absolute bottom-0 inset-x-0 p-3 bg-gradient-to-t from-navy-950/85 to-transparent">
+                    <span className="text-[11px] leading-snug tracking-wide text-white/90">{tile.caption}</span>
+                  </div>
+                </>
+              )}
+            </button>
+          ))}
         </motion.div>
       </div>
 

@@ -1,6 +1,7 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { contact } from "../data/content";
+import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 
 export function FreeConsultancyBanner() {
   return (
@@ -29,9 +30,9 @@ export function FreeConsultancyBanner() {
                 href={`https://wa.me/${contact.whatsapp.replace(/\D/g, "")}`}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 rounded-full border border-white/40 text-white px-6 py-3 text-sm hover:bg-white/10 transition"
+                className="flex items-center gap-2 rounded-full bg-[#25D366] text-white font-semibold px-6 py-3 text-sm hover:bg-[#20bd5a] transition"
               >
-                <MessageCircle size={16} /> WhatsApp
+                <WhatsAppIcon size={16} /> WhatsApp
               </a>
               <a
                 href={`mailto:${contact.email}`}
