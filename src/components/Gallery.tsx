@@ -44,6 +44,12 @@ const albums: Record<GalleryTab, GalleryTile[]> = {
     { type: "photo", src: "/images/gallery/life/serbia-03.jpg", caption: "Cadets — Serbia Flying Facility" },
     { type: "photo", src: "/images/gallery/life/south-africa-01.jpg", caption: "South Africa Flying Facility" },
     { type: "photo", src: "/images/gallery/life/south-africa-02.jpg", caption: "South Africa Flying Facility" },
+    {
+      type: "video",
+      src: "/videos/gallery/life/life-video-03.mp4",
+      poster: "/images/gallery/life/life-video-03.jpg",
+      caption: "Inside Our Office",
+    },
   ],
   FAQs: [
     {
