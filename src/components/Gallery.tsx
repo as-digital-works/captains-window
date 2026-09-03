@@ -48,7 +48,7 @@ const albums: Record<GalleryTab, GalleryTile[]> = {
       type: "video",
       src: "/videos/gallery/life/life-video-03.mp4",
       poster: "/images/gallery/life/life-video-03.jpg",
-      caption: "Inside Our Office",
+      caption: "Inside Our Gurgaon Office",
     },
   ],
   FAQs: [
