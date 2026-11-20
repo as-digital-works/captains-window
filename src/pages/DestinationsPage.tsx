@@ -1,3 +1,4 @@
+import { usePageMeta } from "../hooks/usePageMeta";
 import { PageBanner } from "../components/PageBanner";
 import { GlobeSection } from "../components/GlobeSection";
 import { LocationDetailsSection } from "../components/LocationDetailsSection";
@@ -6,6 +7,7 @@ import { globes } from "../data/content";
 import { useScrollToHash } from "../hooks/useScrollToHash";
 
 export function DestinationsPage() {
+  usePageMeta("Destinations", "Our ground training facilities in Calicut, Gurgaon and Ajman, and partner flying facilities across seven countries.");
   useScrollToHash();
 
   return (

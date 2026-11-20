@@ -1,3 +1,4 @@
+import { usePageMeta } from "../hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Compass, Building2, ArrowRight, BookOpen, ClipboardCheck } from "lucide-react";
@@ -14,6 +15,7 @@ const icons: Record<string, typeof Compass> = {
 const courseIcons = [Compass, BookOpen, ClipboardCheck];
 
 export function ServicesPage() {
+  usePageMeta("Services", "Pilot career guidance, DGCA ground classes, and admission support for flight schools in India and abroad.");
   return (
     <>
       <PageBanner eyebrow="What We Offer" title="Our Services" />
