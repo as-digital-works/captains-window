@@ -10,6 +10,8 @@ import { GalleryPage } from "./pages/GalleryPage";
 import { TestimonialsPage } from "./pages/TestimonialsPage";
 import { ContactPage } from "./pages/ContactPage";
 import { CareersPage } from "./pages/CareersPage";
+import { NewsPage } from "./pages/NewsPage";
+import { NewsDetailPage } from "./pages/NewsDetailPage";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/careers" element={<CareersPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/news/:slug" element={<NewsDetailPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

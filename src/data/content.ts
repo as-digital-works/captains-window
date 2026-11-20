@@ -128,6 +128,7 @@ export const nav = [
   { label: "Destinations", path: "/destinations" },
   { label: "Gallery", path: "/gallery" },
   { label: "Testimonials", path: "/testimonials" },
+  { label: "News", path: "/news" },
   { label: "Contact Us", path: "/contact" },
 ];
 
@@ -308,7 +309,30 @@ export const googleReviews = [
   },
 ];
 
-export type LocationCategory = "flying-facility" | "ground-training" | "flying-academy";
+export const social = {
+  facebook: "https://www.facebook.com/people/Captains-Window/61584797820614/",
+  instagram: "https://www.instagram.com/captains_window/?hl=en",
+  instagramUAE: "https://www.instagram.com/captains_window.ae/",
+  // PLACEHOLDER: Gurgaon branch Instagram URL. Links stay hidden until this is filled in.
+  instagramGurgaon: "",
+  youtube: "https://www.youtube.com/@CaptainsWindowAviation",
+};
+
+/**
+ * Google review badge (header) — edit these numbers/links in one place.
+ * `readUrl` / `writeUrl` are PLACEHOLDERS: when empty, both buttons fall back
+ * to a Google Maps search for the Calicut listing, where visitors can read
+ * reviews and tap "Write a review".
+ */
+export const googleRating = {
+  rating: 4.5,
+  countLabel: "22+",
+  readUrl: "",
+  writeUrl: "",
+  fallbackQuery: "Captains' Window Aviation, HiLite Business Park, Calicut",
+};
+
+export type LocationCategory ="flying-facility" | "ground-training" | "flying-academy";
 
 export type LocationEntry = {
   id: string;
@@ -328,6 +352,12 @@ export type LocationEntry = {
   phone?: string;
   /** Contact phone numbers shown in the "Your Contact" box on the facility modal. Falls back to `highlight` when unset. */
   contactPhones?: string[];
+  /** Google Maps pin link for the address. Empty → falls back to a Maps search for `address`. */
+  mapsUrl?: string;
+  /** Show an expandable embedded map on this location's card. */
+  showMapEmbed?: boolean;
+  /** Branch-specific Instagram profile, shown under the phone number. Empty → hidden. */
+  instagram?: string;
 };
 
 export type GlobeConfig = {
@@ -447,6 +477,8 @@ const groundTrainingLocations: LocationEntry[] = [
     address: "Room No. 1318, 3rd Floor, HiLite Business Park, Calicut, Kerala, India – 673014",
     phone: "+91 8606 74 5000",
     contactPhones: ["+91 8606745000", "+91 8606746000"],
+    // PLACEHOLDER: paste the client's Calicut Google Maps pin link here.
+    mapsUrl: "",
   },
   {
     id: "gurgaon-india",
@@ -461,6 +493,10 @@ const groundTrainingLocations: LocationEntry[] = [
     address: "Vipul Plaza, Suncity, 1st Floor – Unit No. 121-123, Sector 54, Golf Course Road, Gurgaon, 122011",
     phone: "+91 7034 41 6000",
     contactPhones: ["+91 7034 41 6000"],
+    // PLACEHOLDER: paste the client's Gurgaon Google Maps pin link here.
+    mapsUrl: "",
+    showMapEmbed: true,
+    instagram: social.instagramGurgaon,
   },
   {
     id: "ajman-uae",
@@ -476,6 +512,8 @@ const groundTrainingLocations: LocationEntry[] = [
     address: "Room No. 1801, Floor 18, Grand Mall Business Park, Ajman, UAE",
     phone: "+971 522 954 787",
     contactPhones: ["+971 522 954 787"],
+    // PLACEHOLDER: paste the client's Ajman Google Maps pin link here.
+    mapsUrl: "",
   },
 ];
 
@@ -532,11 +570,4 @@ export const contact = {
   whatsappUAE: "+971 522954787",
   whatsappUAEPending: false,
   email: "info@captainswindow.in",
-};
-
-export const social = {
-  facebook: "https://www.facebook.com/people/Captains-Window/61584797820614/",
-  instagram: "https://www.instagram.com/captains_window/?hl=en",
-  instagramUAE: "https://www.instagram.com/captains_window.ae/",
-  youtube: "https://www.youtube.com/@CaptainsWindowAviation",
 };

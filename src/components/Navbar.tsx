@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Link, NavLink } from "react-router-dom";
 import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { nav, contact } from "../data/content";
+import { ReviewBadge } from "./ReviewBadge";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -19,7 +20,7 @@ export function Navbar() {
   return (
     <header className="fixed top-4 sm:top-6 inset-x-3 sm:inset-x-6 lg:inset-x-10 z-50">
       <div
-        className={`mx-auto max-w-6xl rounded-full bg-white ring-1 ring-navy-900/10 transition-all duration-300 ${
+        className={`mx-auto max-w-6xl 2xl:max-w-7xl rounded-full bg-white ring-1 ring-navy-900/10 transition-all duration-300 ${
           scrolled ? "shadow-xl shadow-black/10 py-1.5" : "shadow-lg shadow-black/10 py-2"
         }`}
       >
@@ -89,6 +90,7 @@ export function Navbar() {
           </nav>
 
           <div className="hidden xl:flex items-center gap-3">
+            <ReviewBadge />
             <a
               href={`tel:${contact.phones[0].replace(/\s/g, "")}`}
               className="flex items-center gap-2 rounded-full border-2 border-red-500 px-5 py-2 text-sm font-semibold tracking-wide text-red-500 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors whitespace-nowrap"
@@ -97,8 +99,11 @@ export function Navbar() {
             </a>
           </div>
 
+          <div className="xl:hidden ml-auto">
+            <ReviewBadge compact />
+          </div>
           <button
-            className="xl:hidden ml-auto text-navy-900"
+            className="xl:hidden text-navy-900"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
           >

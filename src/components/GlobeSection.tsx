@@ -1,5 +1,5 @@
 import { Reveal } from "./Reveal";
-import { LocationGlobe } from "./LocationGlobe";
+import { LazyLocationGlobe } from "./LazyLocationGlobe";
 import type { GlobeConfig } from "../data/content";
 
 export function GlobeSection({ globe, tone = "white" }: { globe: GlobeConfig; tone?: "white" | "blue" }) {
@@ -14,7 +14,7 @@ export function GlobeSection({ globe, tone = "white" }: { globe: GlobeConfig; to
 
         <Reveal delay={0.1}>
           <div className="rounded-3xl bg-navy-950 overflow-hidden">
-            <LocationGlobe locations={globe.locations} />
+            <LazyLocationGlobe locations={globe.locations} />
           </div>
         </Reveal>
 

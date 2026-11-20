@@ -1,3 +1,4 @@
+import { usePageMeta } from "../hooks/usePageMeta";
 import { motion } from "framer-motion";
 import { Quote } from "lucide-react";
 import { PageBanner } from "../components/PageBanner";
@@ -8,6 +9,7 @@ import { testimonials, googleReviews } from "../data/content";
 const allTestimonials = [...testimonials, ...googleReviews];
 
 export function TestimonialsPage() {
+  usePageMeta("Testimonials", "What our cadets say about training with Captains' Window Aviation Solutions.");
   return (
     <>
       <PageBanner eyebrow="What Students Say" title="Testimonials" />

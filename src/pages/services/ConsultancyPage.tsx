@@ -1,3 +1,4 @@
+import { usePageMeta } from "../../hooks/usePageMeta";
 import { BadgeCheck } from "lucide-react";
 import { PageBanner } from "../../components/PageBanner";
 import { BadgeStrip, ServiceBody } from "../../components/ServiceBody";
@@ -9,6 +10,7 @@ import { services } from "../../data/content";
 const service = services.find((s) => s.id === "consultancy")!;
 
 export function ConsultancyPage() {
+  usePageMeta("Aviation Education Consultancy", "Helping institutions launch and improve aviation academies — academic, faculty and legal registration support.");
   return (
     <>
       <PageBanner eyebrow="Services" title="Aviation Education Consultancy" />

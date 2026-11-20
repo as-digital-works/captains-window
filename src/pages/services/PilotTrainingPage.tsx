@@ -1,3 +1,4 @@
+import { usePageMeta } from "../../hooks/usePageMeta";
 import { ShieldCheck, Gauge, Award } from "lucide-react";
 import { PageBanner } from "../../components/PageBanner";
 import { BadgeStrip, ServiceBody } from "../../components/ServiceBody";
@@ -17,6 +18,7 @@ const highlights = [
 ];
 
 export function PilotTrainingPage() {
+  usePageMeta("Pilot Training", "Pilot training with Captains' Window: DGCA ground classes, CPL pathway planning, and flight training admissions in India and internationally.");
   return (
     <>
       <PageBanner eyebrow="Services" title="Pilot Training" />

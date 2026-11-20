@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
-import { LocationGlobe } from "./LocationGlobe";
+import { LazyLocationGlobe } from "./LazyLocationGlobe";
 import { globes } from "../data/content";
 
 export function HomeGlobePreview() {
@@ -23,7 +23,7 @@ export function HomeGlobePreview() {
 
         <Reveal delay={0.1}>
           <div className="rounded-3xl bg-navy-950 overflow-hidden">
-            <LocationGlobe locations={flagship.locations} />
+            <LazyLocationGlobe locations={flagship.locations} />
           </div>
         </Reveal>
 
