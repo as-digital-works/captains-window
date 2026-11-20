@@ -6,6 +6,7 @@ import { HomeGlobePreview } from "../components/HomeGlobePreview";
 import { HowItWorks } from "../components/HowItWorks";
 import { CtaBand } from "../components/CtaBand";
 import { NewsSection } from "../components/NewsSection";
+import { MilestonesSection } from "../components/MilestonesSection";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 export function HomePage() {
@@ -17,6 +18,7 @@ export function HomePage() {
       <ServicesStrip />
       <HomeGlobePreview />
       <Testimonials />
+      <MilestonesSection />
       <HowItWorks />
       <NewsSection />
       <CtaBand />
