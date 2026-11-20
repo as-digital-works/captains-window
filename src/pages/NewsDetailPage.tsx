@@ -4,7 +4,7 @@ import { ArrowLeft, CalendarDays } from "lucide-react";
 import { Reveal } from "../components/Reveal";
 import { NewsCard } from "../components/NewsCard";
 import { CtaBand } from "../components/CtaBand";
-import { formatNewsDate, getNewsPost, newsPosts } from "../data/news";
+import { NEWS_BASE, NEWS_TITLE, formatNewsDate, getNewsPost, newsPosts } from "../data/news";
 import { usePageMeta } from "../hooks/usePageMeta";
 
 /** Renders the simple text format described in data/news.ts. */
@@ -41,15 +41,15 @@ function PostBody({ content }: { content: string }) {
 export function NewsDetailPage() {
   const { slug = "" } = useParams();
   const post = getNewsPost(slug);
-  usePageMeta(post ? post.title : "Post not found", post?.excerpt);
+  usePageMeta(post ? `${post.title} – ${NEWS_TITLE}` : "Article not found", post?.excerpt);
 
   if (!post) {
     return (
       <section className="pt-44 pb-28 bg-white text-center px-6">
-        <h1 className="font-display text-3xl text-navy-900">Post not found</h1>
+        <h1 className="font-display text-3xl text-navy-900">Article not found</h1>
         <p className="mt-3 text-ink-600">This article may have moved or been removed.</p>
-        <Link to="/news" className="btn-primary mt-8">
-          <ArrowLeft size={16} /> Back to News
+        <Link to={NEWS_BASE} className="btn-primary mt-8">
+          <ArrowLeft size={16} /> Back to {NEWS_TITLE}
         </Link>
       </section>
     );
@@ -67,13 +67,15 @@ export function NewsDetailPage() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="relative max-w-3xl mx-auto px-6"
         >
-          <Link to="/news" className="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase text-white/60 hover:text-white">
-            <ArrowLeft size={14} /> News &amp; Updates
+          <Link to={NEWS_BASE} className="inline-flex items-center gap-1.5 text-xs tracking-widest uppercase text-white/60 hover:text-white">
+            <ArrowLeft size={14} /> {NEWS_TITLE}
           </Link>
           <h1 className="font-display text-3xl md:text-5xl mt-5 text-white leading-tight">{post.title}</h1>
-          <time dateTime={post.date} className="mt-4 flex items-center gap-1.5 text-sm text-white/60">
-            <CalendarDays size={14} /> {formatNewsDate(post.date)}
-          </time>
+          {post.date && (
+            <time dateTime={post.date} className="mt-4 flex items-center gap-1.5 text-sm text-white/60">
+              <CalendarDays size={14} /> {formatNewsDate(post.date)}
+            </time>
+          )}
         </motion.div>
       </section>
 
@@ -82,7 +84,7 @@ export function NewsDetailPage() {
           <img
             src={post.coverImage}
             alt={post.title}
-            className="w-full aspect-[16/9] object-cover rounded-2xl md:rounded-3xl shadow-xl shadow-black/10"
+            className={`w-full aspect-[16/9] object-cover ${post.coverPosition ?? "object-center"} rounded-2xl md:rounded-3xl shadow-xl shadow-black/10`}
           />
           {post.placeholder && (
             <p className="mt-6 rounded-xl bg-red-50 border border-red-500/20 px-4 py-3 text-xs text-red-700">
@@ -99,7 +101,7 @@ export function NewsDetailPage() {
         <section className="bg-blue-50 py-16 md:py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
             <Reveal className="mb-8">
-              <h2 className="font-display text-2xl text-navy-900">More News</h2>
+              <h2 className="font-display text-2xl text-navy-900">More from {NEWS_TITLE}</h2>
             </Reveal>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {more.map((p, i) => (
