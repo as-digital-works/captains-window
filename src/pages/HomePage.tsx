@@ -5,8 +5,11 @@ import { Testimonials } from "../components/Testimonials";
 import { HomeGlobePreview } from "../components/HomeGlobePreview";
 import { HowItWorks } from "../components/HowItWorks";
 import { CtaBand } from "../components/CtaBand";
+import { NewsSection } from "../components/NewsSection";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 export function HomePage() {
+  usePageMeta();
   return (
     <>
       <Hero />
@@ -15,6 +18,7 @@ export function HomePage() {
       <HomeGlobePreview />
       <Testimonials />
       <HowItWorks />
+      <NewsSection />
       <CtaBand />
     </>
   );
