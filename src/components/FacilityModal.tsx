@@ -1,6 +1,8 @@
 import { ImageIcon, MapPin, Phone, User } from "lucide-react";
 import { Modal } from "./Modal";
+import { AddressLink } from "./AddressLink";
 import { useFacilityModal } from "../context/FacilityModalContext";
+import { telHref } from "../lib/links";
 
 export function FacilityModal() {
   const { location, close } = useFacilityModal();
@@ -33,10 +35,7 @@ export function FacilityModal() {
             {location.address || location.category === "ground-training" ? (
               <div className="mt-5 space-y-1.5 text-sm text-ink-600">
                 {location.address ? (
-                  <div className="flex items-start gap-2">
-                    <MapPin size={15} className="shrink-0 mt-0.5 text-red-600" />
-                    <span>{location.address}</span>
-                  </div>
+                  <AddressLink location={location} iconSize={15} />
                 ) : (
                   <div className="flex items-start gap-2 italic text-ink-400">
                     <MapPin size={15} className="shrink-0 mt-0.5" />
@@ -59,7 +58,7 @@ export function FacilityModal() {
                     {location.contactPhones.map((p) => (
                       <a
                         key={p}
-                        href={`tel:${p.replace(/\s/g, "")}`}
+                        href={telHref(p)}
                         className="text-sm font-semibold text-red-600 hover:text-red-700"
                       >
                         {p}

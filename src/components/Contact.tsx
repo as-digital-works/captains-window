@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { AddressLink } from "./AddressLink";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { allLocations, contact, social } from "../data/content";
+import { external, mapEmbedSrc, mapsHref, telHref } from "../lib/links";
 
 const offices = allLocations.filter((l) => l.category === "ground-training");
+const gurgaon = offices.find((o) => o.id === "gurgaon-india");
 
 function waLink(number: string, text: string) {
   return `https://wa.me/${number.replace(/\D/g, "")}?text=${encodeURIComponent(text)}`;
@@ -73,8 +76,7 @@ export function Contact() {
                       <a
                         key={tab.id}
                         href={`https://wa.me/${tab.number.replace(/\D/g, "")}`}
-                        target="_blank"
-                        rel="noreferrer"
+                        {...external}
                         className="block hover:text-red-600"
                       >
                         {tab.label}: {tab.number}
@@ -99,16 +101,21 @@ export function Contact() {
             </div>
 
             <div className="flex gap-3 mt-2">
-              <a href={social.facebook} target="_blank" rel="noreferrer" className="footer-icon !border-navy-900/15 !text-navy-900" title="Facebook" aria-label="Facebook">
+              <a href={social.facebook} {...external} className="footer-icon !border-navy-900/15 !text-navy-900" title="Facebook" aria-label="Facebook">
                 <FacebookIcon size={16} />
               </a>
-              <a href={social.instagram} target="_blank" rel="noreferrer" className="footer-icon !border-navy-900/15 !text-navy-900" title="Instagram (India)" aria-label="Instagram (India)">
+              <a href={social.instagram} {...external} className="footer-icon !border-navy-900/15 !text-navy-900" title="Instagram (India)" aria-label="Instagram (India)">
                 <InstagramIcon size={16} />
               </a>
-              <a href={social.instagramUAE} target="_blank" rel="noreferrer" className="footer-icon !border-navy-900/15 !text-navy-900" title="Instagram (UAE)" aria-label="Instagram (UAE)">
+              {social.instagramGurgaon && (
+                <a href={social.instagramGurgaon} {...external} className="footer-icon !border-navy-900/15 !text-navy-900" title="Instagram – Gurgaon" aria-label="Instagram – Gurgaon">
+                  <InstagramIcon size={16} />
+                </a>
+              )}
+              <a href={social.instagramUAE} {...external} className="footer-icon !border-navy-900/15 !text-navy-900" title="Instagram (UAE)" aria-label="Instagram (UAE)">
                 <InstagramIcon size={16} />
               </a>
-              <a href={social.youtube} target="_blank" rel="noreferrer" className="footer-icon !border-navy-900/15 !text-navy-900" title="YouTube" aria-label="YouTube">
+              <a href={social.youtube} {...external} className="footer-icon !border-navy-900/15 !text-navy-900" title="YouTube" aria-label="YouTube">
                 <YoutubeIcon size={16} />
               </a>
             </div>
@@ -193,23 +200,54 @@ export function Contact() {
 
         <Reveal delay={0.1} className="mt-20">
           <h3 className="text-center font-display text-xl md:text-2xl text-navy-900 mb-8">Our Offices</h3>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {offices.map((office) => (
-              <div key={office.id} className="card-light rounded-2xl p-6">
-                <div className="text-navy-900 font-semibold mb-3">{office.name}</div>
+              <div key={office.id} className="card-light rounded-2xl p-6 flex flex-col gap-3 text-sm text-ink-600">
+                <div className="text-navy-900 font-semibold">{office.name}</div>
+                <AddressLink location={office} iconSize={14} className="[&>svg]:text-red-600" />
                 {office.phone && (
-                  <a
-                    href={`tel:${office.phone.replace(/\s/g, "")}`}
-                    className="flex items-center gap-2 text-sm text-ink-600 hover:text-red-600"
-                  >
+                  <a href={telHref(office.phone)} className="flex items-center gap-2 hover:text-red-600">
                     <Phone size={14} className="shrink-0 text-red-600" />
                     {office.phone}
+                  </a>
+                )}
+                {office.instagram && (
+                  <a href={office.instagram} {...external} className="flex items-center gap-2 hover:text-red-600">
+                    <InstagramIcon size={14} className="shrink-0 text-red-600" />
+                    Instagram – {office.name.split(",")[0]}
                   </a>
                 )}
               </div>
             ))}
           </div>
         </Reveal>
+
+        {gurgaon?.address && (
+          <Reveal delay={0.1} className="mt-12">
+            <div className="rounded-3xl overflow-hidden border border-navy-900/10 shadow-xl shadow-black/5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-6 py-4 bg-blue-50 border-b border-navy-900/10">
+                <div>
+                  <div className="text-navy-900 font-semibold text-sm">Find us in Gurgaon</div>
+                  <div className="text-xs text-ink-400">{gurgaon.address}</div>
+                </div>
+                <a
+                  href={mapsHref(gurgaon)}
+                  {...external}
+                  className="shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 hover:text-red-700"
+                >
+                  <MapPin size={13} /> Open in Google Maps
+                </a>
+              </div>
+              <iframe
+                title="Map — Captains' Window Gurgaon office"
+                src={mapEmbedSrc(gurgaon.address)}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block w-full h-72 md:h-96 border-0"
+              />
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
 import { brand, contact, nav, social } from "../data/content";
+import { external, telHref } from "../lib/links";
 
 export function Footer() {
   return (
@@ -28,16 +29,16 @@ export function Footer() {
           <p className="mt-3 text-xs font-display font-extrabold tracking-wide text-white/90">{brand.tagline}</p>
           <p className="mt-4 text-sm text-white/50 leading-relaxed">{brand.positioning}</p>
           <div className="flex gap-3 mt-6">
-            <a href={social.facebook} target="_blank" rel="noreferrer" className="footer-icon" title="Facebook" aria-label="Facebook">
+            <a href={social.facebook} {...external} className="footer-icon" title="Facebook" aria-label="Facebook">
               <FacebookIcon size={16} />
             </a>
-            <a href={social.instagram} target="_blank" rel="noreferrer" className="footer-icon" title="Instagram (India)" aria-label="Instagram (India)">
+            <a href={social.instagram} {...external} className="footer-icon" title="Instagram (India)" aria-label="Instagram (India)">
               <InstagramIcon size={16} />
             </a>
-            <a href={social.instagramUAE} target="_blank" rel="noreferrer" className="footer-icon" title="Instagram (UAE)" aria-label="Instagram (UAE)">
+            <a href={social.instagramUAE} {...external} className="footer-icon" title="Instagram (UAE)" aria-label="Instagram (UAE)">
               <InstagramIcon size={16} />
             </a>
-            <a href={social.youtube} target="_blank" rel="noreferrer" className="footer-icon" title="YouTube" aria-label="YouTube">
+            <a href={social.youtube} {...external} className="footer-icon" title="YouTube" aria-label="YouTube">
               <YoutubeIcon size={16} />
             </a>
           </div>
@@ -59,7 +60,16 @@ export function Footer() {
         <div>
           <h4 className="text-red-500 text-xs tracking-[0.25em] uppercase mb-4">Contact</h4>
           <ul className="space-y-2 text-sm text-white/60">
-            <li>{contact.phones.join(" / ")}</li>
+            <li>
+              {contact.phones.map((p, i) => (
+                <span key={p}>
+                  {i > 0 && " / "}
+                  <a href={telHref(p)} className="hover:text-white transition-colors">
+                    {p}
+                  </a>
+                </span>
+              ))}
+            </li>
             <li className="flex items-start gap-1.5">
               <WhatsAppIcon size={14} className="text-[#25D366] shrink-0 mt-0.5" />
               <span>
@@ -68,7 +78,22 @@ export function Footer() {
                 {contact.whatsappUAEPending && " · UAE number pending"}
               </span>
             </li>
-            <li>{contact.email}</li>
+            <li>
+              <a href={`mailto:${contact.email}`} className="hover:text-white transition-colors">
+                {contact.email}
+              </a>
+            </li>
+            {social.instagramGurgaon && (
+              <li>
+                <a
+                  href={social.instagramGurgaon}
+                  {...external}
+                  className="flex items-center gap-1.5 hover:text-white transition-colors"
+                >
+                  <InstagramIcon size={14} className="shrink-0" /> Instagram – Gurgaon
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </div>
