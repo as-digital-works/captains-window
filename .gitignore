@@ -23,3 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Deploy artifacts & hosting credentials — never commit these
+*.zip
+deploy/
+.env
+.env.*
+!.env.example
+.hostinger*
+*.credentials
