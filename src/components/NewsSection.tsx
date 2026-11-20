@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { NewsCard } from "./NewsCard";
-import { newsPosts } from "../data/news";
+import { NEWS_BASE, newsPosts } from "../data/news";
 
-/** Home-page teaser: latest 3 posts + link to /news. */
+/** Home-page teaser for Aviator's Corner: first 3 articles + link to the full list. */
 export function NewsSection() {
   const latest = newsPosts.slice(0, 3);
   if (latest.length === 0) return null;
@@ -19,8 +19,11 @@ export function NewsSection() {
             <span className="h-0.5 w-8 bg-red-600 rounded-full" aria-hidden />
           </span>
           <h2 className="font-display text-3xl md:text-5xl mt-4 text-navy-900">
-            Latest News &amp; <span className="text-gradient-red">Updates</span>
+            Aviator&rsquo;s <span className="text-gradient-red">Corner</span>
           </h2>
+          <p className="mt-4 text-ink-600 max-w-2xl mx-auto">
+            Practical guidance for aspiring pilots and their families — from choosing a training pathway to life in the cockpit.
+          </p>
         </Reveal>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -32,8 +35,8 @@ export function NewsSection() {
         </div>
 
         <Reveal delay={0.2} className="mt-12 text-center">
-          <Link to="/news" className="btn-primary">
-            View All News <ArrowRight size={16} />
+          <Link to={NEWS_BASE} className="btn-primary">
+            View All Articles <ArrowRight size={16} />
           </Link>
         </Reveal>
       </div>

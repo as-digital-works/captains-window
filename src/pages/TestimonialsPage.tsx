@@ -4,6 +4,7 @@ import { Quote } from "lucide-react";
 import { PageBanner } from "../components/PageBanner";
 import { Reveal } from "../components/Reveal";
 import { CtaBand } from "../components/CtaBand";
+import { MilestonesSection } from "../components/MilestonesSection";
 import { testimonials, googleReviews } from "../data/content";
 
 const allTestimonials = [...testimonials, ...googleReviews];
@@ -36,6 +37,7 @@ export function TestimonialsPage() {
           ))}
         </div>
       </section>
+      <MilestonesSection />
       <CtaBand />
     </>
   );

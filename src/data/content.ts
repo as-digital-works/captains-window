@@ -128,7 +128,7 @@ export const nav = [
   { label: "Destinations", path: "/destinations" },
   { label: "Gallery", path: "/gallery" },
   { label: "Testimonials", path: "/testimonials" },
-  { label: "News", path: "/news" },
+  { label: "Aviator's Corner", path: "/aviators-corner" },
   { label: "Contact Us", path: "/contact" },
 ];
 

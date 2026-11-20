@@ -1,96 +1,135 @@
 /**
- * News & Updates — add a post by adding an object to `newsPosts`.
- * Posts are sorted newest-first by `date` automatically, so order here doesn't matter.
+ * Aviator's Corner — add an article by adding an object to `posts`.
+ * Articles are shown in `order` (lowest first); the home page shows the first 3.
  *
  * `content` is plain text: separate paragraphs with a blank line, start a line with
  * "## " for a sub-heading, or "- " for a bullet point.
- * `coverImage` is a path under /public (ideally a 1600px-wide .webp — see scripts/optimize-media.ps1).
+ * `coverImage` is a path under /public (ideally a 1600px .webp — see scripts/optimize-media.ps1);
+ * `coverPosition` keeps the important part of the photo in frame when it's cropped.
  */
+export const NEWS_BASE = "/aviators-corner";
+export const NEWS_TITLE = "Aviator's Corner";
+
 export type NewsPost = {
   slug: string;
   title: string;
-  /** ISO date, e.g. "2026-11-18". */
-  date: string;
+  order: number;
+  /** Optional ISO date, e.g. "2026-11-18". Shown on the card only when set. */
+  date?: string;
+  /** Short description shown on cards (2 lines) and used as the page's meta description. */
   excerpt: string;
   coverImage: string;
+  coverPosition?: string;
   content: string;
-  /** Marks seeded sample posts. Shows a "Sample post" tag until the client replaces it. */
+  /** Marks sample posts. Shows a "Sample post" tag until the client replaces it. */
   placeholder?: boolean;
 };
 
 const posts: NewsPost[] = [
   {
-    slug: "new-cadet-batch-november-2026",
-    title: "New Cadet Batch Begins Ground Training",
-    date: "2026-11-18",
+    slug: "conventional-vs-cadet-pilot-programme",
+    title: "Conventional Pilot Programme",
+    order: 1,
     excerpt:
-      "A new group of aspiring pilots has started DGCA ground classes with Captains' Window — here's what their first months of training will look like.",
-    coverImage: "/images/about/cadets-garden.jpg",
-    placeholder: true,
-    content: `PLACEHOLDER POST — replace with the client's real announcement.
+      "Conventional or Cadet Pilot Programme? Both can lead to an airline career, but they differ in structure, investment, selection procedures and career pathways.",
+    coverImage: "/images/aviators-corner/conventional-vs-cadet.webp",
+    coverPosition: "object-[center_30%]",
+    content: `Choosing the right training pathway is one of the most important decisions an aspiring pilot will make. While both the Conventional and Cadet Pilot Programmes can lead to a career as a commercial airline pilot, they differ in structure, investment, selection procedures and career pathways.
 
-This month we welcomed a new batch of cadets to our ground training programme. Over the coming months they will work through the full set of DGCA ground subjects with our airline-pilot instructors.
+## Conventional Pilot Programme
+Offers students the flexibility to choose their flying school, training location and pace of training. Upon obtaining their Commercial Pilot Licence (CPL), candidates can apply independently for airline recruitment opportunities.
 
-## What the batch will cover
-- Air Navigation and Flight Planning
-- Air Regulations
-- Aviation Meteorology
-- Technical General and Technical Specific
+## Cadet Pilot Programme
+An airline-associated, structured training pathway where candidates typically undergo a selection process before commencing training. The programme is designed around the airline's training requirements, with progression subject to successful completion and applicable airline conditions.
 
-Alongside classroom sessions, each cadet gets one-to-one mentoring on their licensing pathway, medical requirements and flight school options in India and abroad.
-
-We're proud to have them on board and look forward to following their journey into the cockpit.`,
+Understanding the advantages and challenges of both pathways can help aspiring pilots choose a programme that aligns with their financial capabilities, personal preferences and long-term career aspirations.`,
   },
   {
-    slug: "dgca-exam-preparation-tips",
-    title: "5 Tips to Prepare for Your DGCA Ground Exams",
-    date: "2026-11-05",
+    slug: "financial-journey-of-becoming-a-pilot",
+    title: "Financial Journey of Becoming a Pilot",
+    order: 2,
     excerpt:
-      "Our instructors share practical advice on planning your study time, tackling Air Navigation, and walking into the DGCA exam hall with confidence.",
-    coverImage: "/images/about/courses-cockpit.jpg",
-    placeholder: true,
-    content: `PLACEHOLDER POST — replace with the client's real article.
+      "Becoming a pilot is a significant financial commitment. Here's what students and their families should plan for beyond flying training fees.",
+    coverImage: "/images/aviators-corner/financial-journey.webp",
+    coverPosition: "object-[center_20%]",
+    content: `Becoming a pilot is not only a career aspiration but also a significant financial commitment. Understanding the overall investment involved in pilot training is essential for both students and their families.
 
-The DGCA ground exams are the first big milestone on the road to a Commercial Pilot Licence. Here are five habits our instructors see in cadets who clear them first time.
+Beyond flying training fees, aspiring pilots must consider expenses such as ground school, medical examinations, licensing examinations, accommodation, licence conversion, additional flying hours and type rating, where applicable.
 
-## 1. Get your Computer Number early
-You can't book an exam without it, so apply before ground classes begin.
+Exploring education loans, financing options, payment structures and maintaining a contingency fund can help students prepare financially and avoid unexpected challenges during their training journey.
 
-## 2. Start with Air Navigation
-It's the subject most cadets find hardest. Give it the most time and practise problems daily.
-
-## 3. Study in short, regular sessions
-Two focused hours every day beat a ten-hour weekend cram.
-
-## 4. Practise with past-pattern questions
-Timed practice papers show you where you're losing marks.
-
-## 5. Ask early, ask often
-Our instructors are airline pilots and CPL holders. Use them — no question is too basic.`,
+Proper financial planning is an important step towards a smoother and more sustainable aviation career.`,
   },
   {
-    slug: "gurgaon-ground-training-facility-opens",
-    title: "Our Gurgaon Ground Training Facility Is Now Open",
-    date: "2026-10-22",
+    slug: "choosing-the-right-flying-school",
+    title: "Choosing the Right Flying School",
+    order: 3,
     excerpt:
-      "Captains' Window now serves cadets across Delhi NCR from our new facility at Vipul Plaza, Golf Course Road, Gurgaon.",
-    coverImage: "/images/destinations/gurgaon-cyber-city.jpg",
-    placeholder: true,
-    content: `PLACEHOLDER POST — replace with the client's real announcement.
+      "Your choice of flying school shapes the quality, duration and overall experience of your training. Look beyond price and location before you decide.",
+    coverImage: "/images/aviators-corner/choosing-flying-school.webp",
+    coverPosition: "object-[center_35%]",
+    content: `Selecting a flying training organisation is a crucial decision that can significantly influence the quality, duration and overall experience of pilot training.
 
-We're delighted to announce that our Gurgaon ground training facility is open to students across North India.
+Rather than making a decision based solely on attractive pricing or geographical location, aspiring pilots should evaluate several important factors:
 
-Located at Vipul Plaza, Suncity, Sector 54, Golf Course Road, the facility brings the same structured ground school, DGCA exam preparation and career counselling that our Calicut campus is known for.
+- Regulatory approvals and licensing requirements
+- Aircraft fleet size and serviceability
+- Instructor qualifications and student-to-instructor ratio
+- Safety standards and maintenance practices
+- Weather conditions and flying opportunities
+- Average training completion timelines
+- Transparency in pricing and refund policies
+- Accommodation and student support services
+- Licence conversion requirements for overseas training
 
-## Visit us
-Drop in for a free counselling session or call +91 7034 41 6000 to book a time with our team.`,
+A well-informed decision can help students minimise unnecessary delays, additional expenses and complications throughout their flying journey.`,
+  },
+  {
+    slug: "aviation-medicals-are-you-fit-to-fly",
+    title: "Aviation Medicals – Are You Fit to Fly?",
+    order: 4,
+    excerpt:
+      "Medical fitness is a fundamental requirement for a commercial pilot. Understand the DGCA Class 1 and Class 2 medicals before you commit to training.",
+    coverImage: "/images/aviators-corner/aviation-medicals.webp",
+    coverPosition: "object-[center_30%]",
+    content: `Medical fitness is a fundamental requirement for pursuing a career as a commercial pilot. Aspiring pilots must meet the medical standards prescribed by the Directorate General of Civil Aviation (DGCA) in India.
+
+Understanding the difference between Class 1 and Class 2 medical examinations, along with requirements relating to vision, hearing, cardiovascular health and overall physical fitness, is essential before committing to pilot training.
+
+Contrary to popular belief, wearing spectacles does not automatically disqualify an individual from becoming a pilot, provided they meet the prescribed medical standards.
+
+Obtaining the appropriate medical clearance early in the training journey can help candidates identify potential concerns before making a substantial financial investment.`,
+  },
+  {
+    slug: "life-beyond-the-cockpit",
+    title: "Life Beyond the Cockpit",
+    order: 5,
+    excerpt:
+      "A pilot's career goes far beyond flying an aircraft — from responsibility and continuous learning to lifestyle realities and growth towards Captain.",
+    coverImage: "/images/aviators-corner/life-beyond-cockpit.webp",
+    coverPosition: "object-center",
+    content: `A career as a pilot offers exciting opportunities, global exposure and immense professional satisfaction. However, the profession extends far beyond flying an aircraft.
+
+Pilots are responsible for flight planning, weather assessment, operational decision-making, crew coordination and, above all, passenger safety.
+
+Their careers require continuous learning, recurrent training, periodic medical examinations and proficiency assessments.
+
+Aspiring pilots should also understand the realities of irregular working hours, time away from family, fatigue management and the importance of maintaining physical and mental well-being.
+
+From beginning a career as a First Officer to progressing towards becoming a Captain, Training Captain or Examiner, aviation offers numerous opportunities for professional growth.
+
+Becoming a pilot is not simply about earning your wings; it is about embracing a lifelong commitment to professionalism, discipline and excellence.`,
   },
 ];
 
-export const newsPosts: NewsPost[] = [...posts].sort((a, b) => b.date.localeCompare(a.date));
+export const newsPosts: NewsPost[] = [...posts].sort((a, b) => a.order - b.order);
 
 export function getNewsPost(slug: string) {
   return newsPosts.find((p) => p.slug === slug);
+}
+
+export function newsHref(slug: string) {
+  return `${NEWS_BASE}/${slug}`;
 }
 
 export function formatNewsDate(iso: string) {

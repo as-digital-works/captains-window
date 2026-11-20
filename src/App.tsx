@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
+import { NEWS_BASE } from "./data/news";
 import { Layout } from "./components/Layout";
 import { HomePage } from "./pages/HomePage";
 import { AboutPage } from "./pages/AboutPage";
@@ -28,8 +29,11 @@ function App() {
           <Route path="/testimonials" element={<TestimonialsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/careers" element={<CareersPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/news/:slug" element={<NewsDetailPage />} />
+          <Route path={NEWS_BASE} element={<NewsPage />} />
+          <Route path={`${NEWS_BASE}/:slug`} element={<NewsDetailPage />} />
+          {/* Old /news links (shared in the first client preview) redirect to Aviator's Corner. */}
+          <Route path="/news" element={<Navigate to={NEWS_BASE} replace />} />
+          <Route path="/news/*" element={<Navigate to={NEWS_BASE} replace />} />
         </Route>
       </Routes>
     </BrowserRouter>
