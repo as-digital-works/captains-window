@@ -29,7 +29,7 @@ export function Navbar() {
             <img src="/logo.png" alt="Captains' Window" className="h-12 sm:h-14 w-auto" />
           </Link>
 
-          <nav className="hidden xl:flex items-center gap-5 2xl:gap-7">
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-6">
             {nav.map((item) =>
               item.children ? (
                 <div
@@ -90,7 +90,13 @@ export function Navbar() {
           </nav>
 
           <div className="hidden xl:flex items-center gap-3">
-            <ReviewBadge />
+            {/* Compact badge on 1280–1535px so all nav links fit; full stars + count from 1536px. */}
+            <div className="2xl:hidden">
+              <ReviewBadge compact />
+            </div>
+            <div className="hidden 2xl:block">
+              <ReviewBadge />
+            </div>
             <a
               href={`tel:${contact.phones[0].replace(/\s/g, "")}`}
               className="flex items-center gap-2 rounded-full border-2 border-red-500 px-5 py-2 text-sm font-semibold tracking-wide text-red-500 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors whitespace-nowrap"
