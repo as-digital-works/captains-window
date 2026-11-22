@@ -35,6 +35,11 @@ export function Footer() {
             <a href={social.instagram} {...external} className="footer-icon" title="Instagram (India)" aria-label="Instagram (India)">
               <InstagramIcon size={16} />
             </a>
+            {social.instagramGurgaon && (
+              <a href={social.instagramGurgaon} {...external} className="footer-icon" title="Instagram – Gurgaon" aria-label="Instagram – Gurgaon">
+                <InstagramIcon size={16} />
+              </a>
+            )}
             <a href={social.instagramUAE} {...external} className="footer-icon" title="Instagram (UAE)" aria-label="Instagram (UAE)">
               <InstagramIcon size={16} />
             </a>
