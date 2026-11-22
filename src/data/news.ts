@@ -28,7 +28,7 @@ export type NewsPost = {
 const posts: NewsPost[] = [
   {
     slug: "conventional-vs-cadet-pilot-programme",
-    title: "Conventional Pilot Programme",
+    title: "Conventional vs Cadet Pilot Programme",
     order: 1,
     excerpt:
       "Conventional or Cadet Pilot Programme? Both can lead to an airline career, but they differ in structure, investment, selection procedures and career pathways.",

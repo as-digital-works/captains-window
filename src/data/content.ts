@@ -313,8 +313,7 @@ export const social = {
   facebook: "https://www.facebook.com/people/Captains-Window/61584797820614/",
   instagram: "https://www.instagram.com/captains_window/?hl=en",
   instagramUAE: "https://www.instagram.com/captains_window.ae/",
-  // PLACEHOLDER: Gurgaon branch Instagram URL. Links stay hidden until this is filled in.
-  instagramGurgaon: "",
+  instagramGurgaon: "https://www.instagram.com/captainswindow_india/",
   youtube: "https://www.youtube.com/@CaptainsWindowAviation",
 };
 
