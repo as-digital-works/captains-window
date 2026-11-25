@@ -43,7 +43,7 @@ const firstSolo = (slug: string, name: string): Achiever => ({
 export const milestoneCategories: MilestoneCategory[] = [
   {
     id: "academic-achievers",
-    title: "Academic Achievers",
+    title: "DGCA Achievers",
     description:
       "Celebrating our students who have successfully cleared their DGCA examinations, reflecting their dedication, determination and academic excellence.",
     icon: "student",
