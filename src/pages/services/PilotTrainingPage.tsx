@@ -6,6 +6,7 @@ import { PilotRoadmap } from "../../components/PilotRoadmap";
 import { ProgramDetailsPlaceholder } from "../../components/ProgramDetailsPlaceholder";
 import { FAQSection } from "../../components/FAQSection";
 import { CtaBand } from "../../components/CtaBand";
+import { CourseStructure, CplSubjectsSlider } from "../../components/PilotTrainingSections";
 import { Reveal } from "../../components/Reveal";
 import { services } from "../../data/content";
 
@@ -37,6 +38,8 @@ export function PilotTrainingPage() {
         </Reveal>
       </ServiceBody>
       <ProgramDetailsPlaceholder />
+      <CplSubjectsSlider />
+      <CourseStructure />
       <PilotRoadmap />
       <FAQSection />
       <CtaBand />

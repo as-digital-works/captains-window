@@ -19,7 +19,7 @@ export function GoogleG({ size = 16 }: { size?: number }) {
   );
 }
 
-function Stars({ rating, size = 12 }: { rating: number; size?: number }) {
+export function Stars({ rating, size = 12 }: { rating: number; size?: number }) {
   return (
     <span className="flex items-center gap-0.5" aria-hidden>
       {Array.from({ length: 5 }, (_, i) => {

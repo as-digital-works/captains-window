@@ -2,6 +2,7 @@ import { Hero } from "../components/Hero";
 import { StatsBar } from "../components/StatsBar";
 import { ServicesStrip } from "../components/ServicesStrip";
 import { Testimonials } from "../components/Testimonials";
+import { GoogleReviewsSlider } from "../components/GoogleReviewsSlider";
 import { HomeGlobePreview } from "../components/HomeGlobePreview";
 import { HowItWorks } from "../components/HowItWorks";
 import { CtaBand } from "../components/CtaBand";
@@ -18,6 +19,7 @@ export function HomePage() {
       <ServicesStrip />
       <HomeGlobePreview />
       <Testimonials />
+      <GoogleReviewsSlider />
       <MilestonesSection limit={12} />
       <HowItWorks />
       <NewsSection />

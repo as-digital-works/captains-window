@@ -6,7 +6,7 @@ export function NewsCard({ post }: { post: NewsPost }) {
   const href = newsHref(post.slug);
   return (
     <article className="group card-light rounded-2xl p-4 h-full flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-navy-900/10 hover:border-red-500/30">
-      <Link to={href} className="relative block aspect-[16/10] rounded-xl overflow-hidden bg-navy-900" tabIndex={-1} aria-hidden>
+      <Link to={href} className="relative block aspect-[4/3] rounded-xl overflow-hidden bg-navy-900" tabIndex={-1} aria-hidden>
         <img
           src={post.coverImage}
           alt=""
@@ -21,7 +21,7 @@ export function NewsCard({ post }: { post: NewsPost }) {
         )}
       </Link>
       <div className="flex flex-col flex-1 px-1 pt-5 pb-1">
-        <h3 className="font-display text-lg leading-snug text-navy-900 line-clamp-2 min-h-[2lh]">
+        <h3 className="font-display text-lg leading-snug text-navy-900 line-clamp-2 sm:min-h-[2lh]">
           <Link to={href} className="hover:text-red-600 transition-colors">
             {post.title}
           </Link>

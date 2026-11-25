@@ -399,6 +399,13 @@ export const googleRating = {
   readUrl: "",
   writeUrl: "",
   fallbackQuery: "Captains' Window Aviation, HiLite Business Park, Calicut",
+  /**
+   * Live reviews for the Home page slider (optional). Set `placeId` here and the
+   * VITE_GOOGLE_PLACES_API_KEY environment variable (a Google Places API key restricted to
+   * the website's domain). New Google reviews then appear automatically; until both are
+   * set, the slider shows the saved `googleReviews` list below.
+   */
+  placeId: "",
 };
 
 export type LocationCategory ="flying-facility" | "ground-training" | "flying-academy";

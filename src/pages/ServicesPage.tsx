@@ -5,6 +5,7 @@ import { Compass, Building2, Globe2, ArrowRight, BookOpen, ClipboardCheck } from
 import { PageBanner } from "../components/PageBanner";
 import { Reveal } from "../components/Reveal";
 import { CtaBand } from "../components/CtaBand";
+import { DgcaComputerNumber, DgcaExamRequirements, DgcaPrerequisites } from "../components/DgcaSections";
 import { brand, services, courseOfferings } from "../data/content";
 
 const icons: Record<string, typeof Compass> = {
@@ -100,6 +101,9 @@ export function ServicesPage() {
         </div>
       </section>
 
+      <DgcaExamRequirements />
+      <DgcaPrerequisites />
+      <DgcaComputerNumber />
       <CtaBand />
     </>
   );

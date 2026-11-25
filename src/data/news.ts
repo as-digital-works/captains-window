@@ -33,7 +33,7 @@ const posts: NewsPost[] = [
     excerpt:
       "Conventional or Cadet Pilot Programme? Both can lead to an airline career, but they differ in structure, investment, selection procedures and career pathways.",
     coverImage: "/images/aviators-corner/conventional-vs-cadet.webp",
-    coverPosition: "object-[center_30%]",
+    coverPosition: "object-[center_56%]",
     content: `Choosing the right training pathway is one of the most important decisions an aspiring pilot will make. While both the Conventional and Cadet Pilot Programmes can lead to a career as a commercial airline pilot, they differ in structure, investment, selection procedures and career pathways.
 
 ## Conventional Pilot Programme
@@ -51,7 +51,7 @@ Understanding the advantages and challenges of both pathways can help aspiring p
     excerpt:
       "Becoming a pilot is a significant financial commitment. Here's what students and their families should plan for beyond flying training fees.",
     coverImage: "/images/aviators-corner/financial-journey.webp",
-    coverPosition: "object-[center_20%]",
+    coverPosition: "object-[center_3%]",
     content: `Becoming a pilot is not only a career aspiration but also a significant financial commitment. Understanding the overall investment involved in pilot training is essential for both students and their families.
 
 Beyond flying training fees, aspiring pilots must consider expenses such as ground school, medical examinations, licensing examinations, accommodation, licence conversion, additional flying hours and type rating, where applicable.
@@ -91,7 +91,7 @@ A well-informed decision can help students minimise unnecessary delays, addition
     excerpt:
       "Medical fitness is a fundamental requirement for a commercial pilot. Understand the DGCA Class 1 and Class 2 medicals before you commit to training.",
     coverImage: "/images/aviators-corner/aviation-medicals.webp",
-    coverPosition: "object-[center_30%]",
+    coverPosition: "object-[center_31%]",
     content: `Medical fitness is a fundamental requirement for pursuing a career as a commercial pilot. Aspiring pilots must meet the medical standards prescribed by the Directorate General of Civil Aviation (DGCA) in India.
 
 Understanding the difference between Class 1 and Class 2 medical examinations, along with requirements relating to vision, hearing, cardiovascular health and overall physical fitness, is essential before committing to pilot training.

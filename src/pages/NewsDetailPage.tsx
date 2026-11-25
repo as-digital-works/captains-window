@@ -84,7 +84,7 @@ export function NewsDetailPage() {
           <img
             src={post.coverImage}
             alt={post.title}
-            className={`w-full aspect-[16/9] object-cover ${post.coverPosition ?? "object-center"} rounded-2xl md:rounded-3xl shadow-xl shadow-black/10`}
+            className={`w-full aspect-[4/3] object-cover ${post.coverPosition ?? "object-center"} rounded-2xl md:rounded-3xl shadow-xl shadow-black/10`}
           />
           {post.placeholder && (
             <p className="mt-6 rounded-xl bg-red-50 border border-red-500/20 px-4 py-3 text-xs text-red-700">
