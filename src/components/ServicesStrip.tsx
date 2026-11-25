@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { Compass, Building2, ArrowRight } from "lucide-react";
+import { Compass, Building2, Globe2, ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { services } from "../data/content";
 
 const icons: Record<string, typeof Compass> = {
   "pilot-training": Compass,
   consultancy: Building2,
+  uae: Globe2,
 };
 
 export function ServicesStrip() {
@@ -19,7 +20,7 @@ export function ServicesStrip() {
           </h2>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-5 max-w-5xl mx-auto">
           {services.map((s, i) => {
             const Icon = icons[s.id];
             return (

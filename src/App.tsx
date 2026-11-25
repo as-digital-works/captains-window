@@ -6,6 +6,7 @@ import { AboutPage } from "./pages/AboutPage";
 import { ServicesPage } from "./pages/ServicesPage";
 import { PilotTrainingPage } from "./pages/services/PilotTrainingPage";
 import { ConsultancyPage } from "./pages/services/ConsultancyPage";
+import { UaeServicesPage } from "./pages/services/UaeServicesPage";
 import { DestinationsPage } from "./pages/DestinationsPage";
 import { GalleryPage } from "./pages/GalleryPage";
 import { TestimonialsPage } from "./pages/TestimonialsPage";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/services/pilot-training" element={<PilotTrainingPage />} />
           <Route path="/services/aviation-education-consultancy" element={<ConsultancyPage />} />
+          <Route path="/services/uae" element={<UaeServicesPage />} />
           <Route path="/destinations" element={<DestinationsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />

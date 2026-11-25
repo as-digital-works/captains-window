@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { Reveal } from "./Reveal";
 import { AddressLink } from "./AddressLink";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "./SocialIcons";
@@ -205,11 +205,23 @@ export function Contact() {
               <div key={office.id} className="card-light rounded-2xl p-6 flex flex-col gap-3 text-sm text-ink-600">
                 <div className="text-navy-900 font-semibold">{office.name}</div>
                 <AddressLink location={office} iconSize={14} className="[&>svg]:text-red-600" />
-                {office.phone && (
-                  <a href={telHref(office.phone)} className="flex items-center gap-2 hover:text-red-600">
+                {(office.contactPhones ?? (office.phone ? [office.phone] : [])).map((p) => (
+                  <a key={p} href={telHref(p)} className="flex items-center gap-2 hover:text-red-600">
                     <Phone size={14} className="shrink-0 text-red-600" />
-                    {office.phone}
+                    {p}
                   </a>
+                ))}
+                {office.email && (
+                  <a href={`mailto:${office.email}`} className="flex items-center gap-2 hover:text-red-600">
+                    <Mail size={14} className="shrink-0 text-red-600" />
+                    {office.email}
+                  </a>
+                )}
+                {office.hours && (
+                  <p className="flex items-start gap-2">
+                    <Clock size={14} className="shrink-0 mt-0.5 text-red-600" />
+                    {office.hours}
+                  </p>
                 )}
                 {office.instagram && (
                   <a href={office.instagram} {...external} className="flex items-center gap-2 hover:text-red-600">

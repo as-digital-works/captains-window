@@ -18,7 +18,7 @@ export function HomePage() {
       <ServicesStrip />
       <HomeGlobePreview />
       <Testimonials />
-      <MilestonesSection />
+      <MilestonesSection limit={12} />
       <HowItWorks />
       <NewsSection />
       <CtaBand />

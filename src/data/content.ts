@@ -69,6 +69,59 @@ export const stats = [
   { value: 35, suffix: "+", label: "Qualified Instructors" },
   { value: 1800, suffix: "+", label: "Graduates" },
   { value: 15, suffix: "+", label: "Years Experience" },
+  { value: 7, suffix: "", label: "Training Countries" },
+];
+
+/** "What Sets Us Apart" (About page) — from the client's brochure. */
+export const differentiators = [
+  { title: "Candid counsel", text: "Eligibility, cost and timeline, stated plainly." },
+  { title: "Pilot-led instruction", text: "Taught by airline pilots and CPL holders who have flown the path." },
+  {
+    title: "One continuous path",
+    text: "Guidance, ground school, admissions and airline preparation. One plan, one team.",
+  },
+  {
+    title: "A global network",
+    text: "Training partners in seven countries, matched to each student's licence, budget and timeline.",
+  },
+];
+
+/** "Our Journey" timeline (About page) — from the client's brochure. */
+export const journey = [
+  {
+    year: "2021",
+    text: "Captains' Window Aviation Solutions LLP is registered in Kozhikode. First DGCA ground classes begin.",
+  },
+  { year: "2022", text: "Home campus opens at HiLite Business Park, Calicut." },
+  { year: "2023", text: "First cadets begin flight training overseas, in Serbia and South Africa." },
+  { year: "2024", text: "Gurgaon ground training office opens, serving Delhi NCR." },
+  { year: "2025", text: "Ajman office opens, serving students across the UAE." },
+  {
+    year: "2026",
+    text: "Captains' Window India Pvt Ltd is incorporated. Parents pin epaulettes on a full batch of cadets at our first Guiding the Journey ceremony.",
+  },
+];
+
+/** UAE Services page (/services/uae) — from the client's brochure. */
+export const uaeServices = [
+  {
+    title: "Career Advisory",
+    text: "Eligibility assessment, choice of licence and country, budget and a written plan.",
+  },
+  { title: "DGCA Ground School", text: "CPL theory, delivered by airline pilots." },
+  {
+    title: "Flight School Admissions",
+    text: "School selection in India and overseas, with support for applications, documentation, visas and medicals.",
+  },
+  {
+    title: "Airline Selection Preparation",
+    text: "Aptitude tests, technical and HR interviews, group exercises and simulator assessments.",
+  },
+  {
+    title: "Cabin Crew Pathway",
+    text: "Airline requirements, CV and photography, presentation standards, open days and final interviews.",
+  },
+  { title: "Aviation Career Consultation", text: "A one-to-one session to define the right aviation career." },
 ];
 
 export type Service = {
@@ -111,6 +164,13 @@ export const services: Service[] = [
       { title: "Faculty Support", text: "Trainer sourcing, development and quality assurance." },
       { title: "Legal Registrations", text: "Guidance through regulatory and legal registration." },
     ],
+  },
+  {
+    id: "uae",
+    path: "/services/uae",
+    title: "UAE Services",
+    summary: "Career advisory, ground school, admissions and cabin crew pathways from our Ajman office.",
+    detail: "Our Ajman office serves students and families across the UAE. Every engagement begins with a consultation.",
   },
 ];
 
@@ -198,6 +258,16 @@ export const testimonials = [
 
 /** Additional 5-star reviews pulled verbatim from Captains' Window's Google Business listing (4.9★, 80 reviews, Calicut). Shown on the full Testimonials page alongside the featured set above. */
 export const googleReviews = [
+  {
+    name: "Anhaj AC",
+    quote:
+      "Captain's Window Ground School is an excellent place for anyone who is serious about pursuing a career in aviation. The instructors are knowledgeable, supportive, and explain even difficult concepts in a very clear and understandable way. The classes are well-structured, interactive, and provide a great foundation for aviation exams and future flight training. The overall atmosphere is motivating and professional, and the guidance from the faculty is genuinely helpful. Highly recommended for aspiring pilots who want strong ground knowledge and proper guidance throughout their aviation journey!",
+  },
+  {
+    name: "Irfadul Haq KP",
+    quote:
+      "I had a fantastic experience at Captain's Window Pilot Training Academy. The instructors are highly knowledgeable, patient, and genuinely committed to helping students succeed. The training is well-structured, combining strong theoretical knowledge with practical, hands-on flying experience. The academy maintains professional standards, and the learning environment is supportive and motivating. I especially appreciated how the instructors focus on building both confidence and technical skills, ensuring students are fully prepared for real-world aviation challenges. If you're serious about pursuing a career in aviation, I highly recommend Captain's Window Pilot Training Academy. It's a great place to start your journey toward becoming a skilled and confident pilot.",
+  },
   {
     name: "Manu Fayi",
     quote:
@@ -357,6 +427,10 @@ export type LocationEntry = {
   showMapEmbed?: boolean;
   /** Branch-specific Instagram profile, shown under the phone number. Empty → hidden. */
   instagram?: string;
+  /** Branch email, shown on the Contact page when set. */
+  email?: string;
+  /** Opening hours, shown on the Contact page when set. */
+  hours?: string;
 };
 
 export type GlobeConfig = {
@@ -508,9 +582,11 @@ const groundTrainingLocations: LocationEntry[] = [
     description:
       "Our ground training facility in Ajman, UAE, featuring a reception area, boardroom, and executive offices for students and partners in the region.",
     highlight: "Reception, boardroom & executive offices for our UAE cadets",
-    address: "Room No. 1801, Floor 18, Grand Mall Business Park, Ajman, UAE",
+    address: "Room No. 1801, Floor 18, Grand Mall Business Park, Rashidiya 3, Ajman, UAE",
     phone: "+971 522 954 787",
     contactPhones: ["+971 522 954 787"],
+    email: "info@captainswindow.ae",
+    hours: "Monday to Saturday, 9:30 am – 6:30 pm. Sunday closed.",
     // PLACEHOLDER: paste the client's Ajman Google Maps pin link here.
     mapsUrl: "",
   },

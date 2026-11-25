@@ -8,6 +8,10 @@
 export type Achiever = {
   name: string;
   photo?: string;
+  /** Full congratulation poster, opened when the card is clicked. */
+  poster?: string;
+  /** CSS object-position for the card photo (defaults to the top of the photo). */
+  photoPosition?: string;
   detail?: string;
   /** Sample entry — shown with placeholder styling until the client sends real details. */
   placeholder?: boolean;
@@ -22,6 +26,20 @@ export type MilestoneCategory = {
   achievers: Achiever[];
 };
 
+const academic = (slug: string, name: string, subject: string): Achiever => ({
+  name,
+  detail: subject,
+  photo: `/images/milestones/academic/${slug}.webp`,
+  poster: `/images/milestones/academic/${slug}-poster.webp`,
+});
+
+const firstSolo = (slug: string, name: string): Achiever => ({
+  name,
+  photo: `/images/gallery/first-solo/${slug}-thumb.webp`,
+  poster: `/images/gallery/first-solo/${slug}.webp`,
+  photoPosition: "object-[center_35%]",
+});
+
 export const milestoneCategories: MilestoneCategory[] = [
   {
     id: "academic-achievers",
@@ -29,11 +47,24 @@ export const milestoneCategories: MilestoneCategory[] = [
     description:
       "Celebrating our students who have successfully cleared their DGCA examinations, reflecting their dedication, determination and academic excellence.",
     icon: "student",
-    // PLACEHOLDER: replace with real student names, photos and the DGCA subject they cleared.
+    // DGCA CPL subjects cleared, from the client's congratulation posters.
     achievers: [
-      { name: "Student Name", detail: "Air Navigation", placeholder: true },
-      { name: "Student Name", detail: "Aviation Meteorology", placeholder: true },
-      { name: "Student Name", detail: "Air Regulations", placeholder: true },
+      academic("farhana-pk", "Farhana P K", "Air Regulations, Air Navigation, Meteorology & RTR Part 1"),
+      academic("fawaz", "Fawaz", "Meteorology"),
+      academic("sana-fahmi", "Sana Fahmi", "Technical General"),
+      academic("pranav-p", "Pranav P.", "Air Regulations"),
+      academic("anhaj", "Anhaj", "Meteorology"),
+      academic("nasrul-haq", "Nasrul Haq", "Radio Telephony (RT)"),
+      academic("isha", "Isha", "Air Navigation"),
+      academic("ajmal", "Ajmal", "Technical Specific"),
+      academic("nidha", "Nidha", "Air Navigation"),
+      academic("hishma", "Hishma", "Air Regulations"),
+      academic("naif", "Naif", "Technical General"),
+      academic("shanha", "Shanha", "Air Regulations"),
+      academic("ashil", "Ashil", "Air Navigation"),
+      academic("abishek", "Abishek", "Meteorology"),
+      academic("navaneeth", "Navaneeth", "Radio Telephony (RT)"),
+      academic("yazeed", "Yazeed", "Radio Telephony (RT)"),
     ],
   },
   {
@@ -42,11 +73,13 @@ export const milestoneCategories: MilestoneCategory[] = [
     description:
       "The first solo flight is an unforgettable milestone in every aviator's journey. We proudly celebrate our students as they take to the skies independently, turning their dreams into reality.",
     icon: "plane",
-    // PLACEHOLDER: replace with real student names and first-solo photos.
     achievers: [
-      { name: "Student Name", placeholder: true },
-      { name: "Student Name", placeholder: true },
-      { name: "Student Name", placeholder: true },
+      firstSolo("alan-saju", "Alan Saju"),
+      firstSolo("nasrul-haq", "Nasrul Haq"),
+      firstSolo("muhammed-sajid-mk", "Muhammed Sajid MK"),
+      firstSolo("salman-fayis-t", "Salman Fayis T"),
+      firstSolo("muhammed-ashil", "Muhammed Ashil"),
+      firstSolo("aadil-manzoor-muhamad", "Aadil Manzoor Muhamad"),
     ],
   },
 ];

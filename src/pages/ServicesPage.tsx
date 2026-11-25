@@ -1,7 +1,7 @@
 import { usePageMeta } from "../hooks/usePageMeta";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Compass, Building2, ArrowRight, BookOpen, ClipboardCheck } from "lucide-react";
+import { Compass, Building2, Globe2, ArrowRight, BookOpen, ClipboardCheck } from "lucide-react";
 import { PageBanner } from "../components/PageBanner";
 import { Reveal } from "../components/Reveal";
 import { CtaBand } from "../components/CtaBand";
@@ -10,6 +10,7 @@ import { brand, services, courseOfferings } from "../data/content";
 const icons: Record<string, typeof Compass> = {
   "pilot-training": Compass,
   consultancy: Building2,
+  uae: Globe2,
 };
 
 const courseIcons = [Compass, BookOpen, ClipboardCheck];
@@ -34,7 +35,7 @@ export function ServicesPage() {
             </p>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {services.map((s, i) => {
               const Icon = icons[s.id];
               return (
