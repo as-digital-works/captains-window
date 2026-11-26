@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronDown } from "lucide-react";
+import { GraduationCap, MapPin, Plane } from "lucide-react";
 import { brand, contact } from "../data/content";
 import { WhatsAppIcon } from "./icons/WhatsAppIcon";
+import { HeroSlider } from "./HeroSlider";
 
 export function Hero() {
   return (
@@ -14,20 +15,19 @@ export function Hero() {
           Toned toward the brand's navy so it reads as "on-brand corporate"
           rather than a raw warm/orange travel photo, and darkened enough
           for the white type stacked on top to stay legible everywhere. */}
+      {/* Academy photo/video slider (see HeroSlider.tsx), toned toward the brand navy
+          so the white type on top stays legible on every slide. */}
+      <HeroSlider />
       <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/hero/cockpit-bg.jpg)" }}
-      />
-      <div
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(165deg, rgba(5,12,28,0.88) 0%, rgba(8,26,55,0.72) 40%, rgba(5,12,28,0.6) 62%, rgba(5,12,28,0.92) 100%)",
+            "linear-gradient(165deg, rgba(5,12,28,0.78) 0%, rgba(8,26,55,0.55) 40%, rgba(5,12,28,0.5) 62%, rgba(5,12,28,0.88) 100%)",
         }}
       />
       <div
-        className="absolute inset-0 mix-blend-multiply"
-        style={{ background: "linear-gradient(160deg, rgba(18,51,116,0.55), rgba(5,12,28,0.25))" }}
+        className="absolute inset-0 mix-blend-multiply pointer-events-none"
+        style={{ background: "linear-gradient(160deg, rgba(18,51,116,0.45), rgba(5,12,28,0.2))" }}
       />
       {/* Faint blueprint dot-grid for texture, consistent with the rest of the site */}
       <div
@@ -64,6 +64,26 @@ export function Hero() {
           {brand.tagline}
         </motion.h1>
 
+        <motion.ul
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.6 }}
+          className="mt-7 flex flex-wrap justify-center gap-2"
+        >
+          {[
+            { icon: GraduationCap, text: "DGCA CPL Ground School" },
+            { icon: Plane, text: "Taught by airline pilots" },
+            { icon: MapPin, text: "Calicut · Gurgaon · Ajman" },
+          ].map(({ icon: Icon, text }) => (
+            <li
+              key={text}
+              className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 backdrop-blur-sm px-3.5 py-1.5 text-[11px] sm:text-xs text-white/90"
+            >
+              <Icon size={13} className="text-white/70" /> {text}
+            </li>
+          ))}
+        </motion.ul>
+
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -93,13 +113,6 @@ export function Hero() {
         </motion.span>
       </div>
 
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
-        className="relative z-10 mt-14 flex justify-center text-white/50"
-      >
-        <ChevronDown size={26} />
-      </motion.div>
     </section>
   );
 }
