@@ -30,7 +30,7 @@ const academic = (slug: string, name: string, subject: string): Achiever => ({
   name,
   detail: subject,
   photo: `/images/milestones/academic/${slug}.webp`,
-  poster: `/images/milestones/academic/${slug}-poster.webp`,
+  // No `poster`: these cards don't open the full congratulation poster.
 });
 
 const firstSolo = (slug: string, name: string): Achiever => ({
@@ -43,7 +43,7 @@ const firstSolo = (slug: string, name: string): Achiever => ({
 export const milestoneCategories: MilestoneCategory[] = [
   {
     id: "academic-achievers",
-    title: "DGCA Achievers",
+    title: "Some of Our DGCA Achievers",
     description:
       "Celebrating our students who have successfully cleared their DGCA examinations, reflecting their dedication, determination and academic excellence.",
     icon: "student",
